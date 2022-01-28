@@ -17,15 +17,16 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http" % akkaHttpVersion,
   "com.typesafe.akka" %% "akka-stream" % akkaVersion,
   "com.typesafe.akka" %% "akka-cluster" % akkaVersion,
-  "com.typesafe.akka" %% "akka-cluster-tools" % akkaVersion
+  "com.typesafe.akka" %% "akka-cluster-tools" % akkaVersion,
+  "com.typesafe.akka" %% "akka-remote" % akkaVersion
 )
 
 enablePlugins(JavaAppPackaging)
 enablePlugins(DockerPlugin)
 enablePlugins(AshScriptPlugin)
 
-mainClass in Compile := Some("com.elleflorio.cluster.playground.Server")
+mainClass in Compile := Some("com.zickat.cluster.playground.Server")
 dockerBaseImage := "java:8-jre-alpine"
 version in Docker := "latest"
 dockerExposedPorts := Seq(8000)
-dockerRepository := Some("elleflorio")
+dockerRepository := Some("zickat")

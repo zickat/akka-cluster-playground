@@ -1,4 +1,4 @@
-package com.elleflorio.cluster.playground.node.cluster
+package com.zickat.cluster.playground.node.cluster
 
 import akka.actor.{Actor, ActorLogging, Props}
 import akka.cluster.Cluster

@@ -7,7 +7,7 @@ services:
   seed:
     networks:
       - cluster-network
-    image: elleflorio/akka-cluster-playground
+    image: zickat/akka-cluster-playground
     ports:
       - '2552:2552'
       - '8000:8000'
@@ -19,7 +19,7 @@ services:
   node1:
     networks:
       - cluster-network
-    image: elleflorio/akka-cluster-playground
+    image: zickat/akka-cluster-playground
     ports:
       - '8001:8000'
     environment:
@@ -32,7 +32,7 @@ services:
   node2:
     networks:
       - cluster-network
-    image: elleflorio/akka-cluster-playground
+    image: zickat/akka-cluster-playground
     ports:
       - '8002:8000'
     environment:

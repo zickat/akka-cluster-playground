@@ -1,13 +1,13 @@
-package com.elleflorio.cluster.playground
+package com.zickat.cluster.playground
 
 import akka.actor.{ActorRef, ActorSystem}
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import akka.stream.ActorMaterializer
-import com.elleflorio.cluster.playground.api.NodeRoutes
-import com.elleflorio.cluster.playground.node.Node
 import com.typesafe.config.{Config, ConfigFactory}
+import com.zickat.cluster.playground.api.NodeRoutes
+import com.zickat.cluster.playground.node.Node
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration

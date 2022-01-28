@@ -1,4 +1,4 @@
-package com.elleflorio.cluster.playground.api
+package com.zickat.cluster.playground.api
 
 import akka.actor.{ActorRef, ActorSystem}
 import akka.http.scaladsl.marshallers.sprayjson._
@@ -7,11 +7,12 @@ import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import akka.pattern.ask
 import akka.util.Timeout
+import akka.http.scaladsl.model._
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import com.elleflorio.cluster.playground.node.processor.ProcessorResponseJsonProtocol._
-import com.elleflorio.cluster.playground.node.Node.{GetClusterMembers, GetFibonacci}
-import com.elleflorio.cluster.playground.node.processor.ProcessorResponse
+import com.zickat.cluster.playground.node.Node.{GetClusterMembers, GetFibonacci}
+import com.zickat.cluster.playground.node.processor.ProcessorResponse
+import com.zickat.cluster.playground.node.processor.ProcessorResponseJsonProtocol._
 
 import scala.concurrent.Future
 import scala.concurrent.duration._
@@ -45,7 +46,7 @@ trait NodeRoutes extends SprayJsonSupport {
               get {
                 val membersFuture: Future[List[String]] = (node ? GetClusterMembers).mapTo[List[String]]
                 onSuccess(membersFuture) { members =>
-                  complete(StatusCodes.OK, members)
+                  complete(members)
                 }
               }
             )
@@ -65,7 +66,7 @@ trait NodeRoutes extends SprayJsonSupport {
                 get {
                   val processFuture: Future[ProcessorResponse] = (node ? GetFibonacci(n)).mapTo[ProcessorResponse]
                   onSuccess(processFuture) { response =>
-                    complete(StatusCodes.OK, response)
+                    complete(response)
                   }
                 }
               )

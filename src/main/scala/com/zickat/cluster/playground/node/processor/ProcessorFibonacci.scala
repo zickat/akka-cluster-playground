@@ -1,4 +1,4 @@
-package com.elleflorio.cluster.playground.node.processor
+package com.zickat.cluster.playground.node.processor
 
 import akka.actor.{Actor, ActorRef, Props}
 
@@ -7,6 +7,7 @@ import scala.annotation.tailrec
 object ProcessorFibonacci {
   sealed trait ProcessorFibonacciMessage
   case class Compute(n: Int, replyTo: ActorRef) extends ProcessorFibonacciMessage
+  case class ComputeNumber(n: Int, replyTo: ActorRef) extends ProcessorFibonacciMessage
 
   def props(nodeId: String) = Props(new ProcessorFibonacci(nodeId))
 
@@ -26,6 +27,9 @@ class ProcessorFibonacci(nodeId: String) extends Actor {
   override def receive: Receive = {
     case Compute(value, replyTo) => {
       replyTo ! ProcessorResponse(nodeId, fibonacci(value))
+    }
+    case ComputeNumber(value, replyTo) => {
+      replyTo ! fibonacci(value)
     }
   }
 }

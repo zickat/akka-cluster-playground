@@ -1,4 +1,4 @@
-package com.elleflorio.cluster.playground.node.processor
+package com.zickat.cluster.playground.node.processor
 
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import spray.json.DefaultJsonProtocol

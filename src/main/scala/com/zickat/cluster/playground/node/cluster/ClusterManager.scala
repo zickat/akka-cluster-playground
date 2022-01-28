@@ -1,9 +1,9 @@
-package com.elleflorio.cluster.playground.node.cluster
+package com.zickat.cluster.playground.node.cluster
 
 import akka.actor.{Actor, ActorLogging, ActorRef, Props}
 import akka.cluster.{Cluster, MemberStatus}
-import com.elleflorio.cluster.playground.Server.system
-import com.elleflorio.cluster.playground.node.cluster.ClusterManager.GetMembers
+import com.zickat.cluster.playground.Server.system
+import ClusterManager.GetMembers
 
 object ClusterManager {
 

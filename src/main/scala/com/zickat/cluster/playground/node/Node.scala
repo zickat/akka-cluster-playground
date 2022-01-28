@@ -1,12 +1,12 @@
-package com.elleflorio.cluster.playground.node
+package com.zickat.cluster.playground.node
 
 import akka.actor.{Actor, ActorRef, Props}
 import akka.routing.FromConfig
-import com.elleflorio.cluster.playground.node.Node.{GetClusterMembers, GetFibonacci}
-import com.elleflorio.cluster.playground.node.cluster.ClusterManager
-import com.elleflorio.cluster.playground.node.cluster.ClusterManager.GetMembers
-import com.elleflorio.cluster.playground.node.processor.Processor
-import com.elleflorio.cluster.playground.node.processor.Processor.ComputeFibonacci
+import com.zickat.cluster.playground.node.Node.{GetClusterMembers, GetFibonacci}
+import com.zickat.cluster.playground.node.cluster.ClusterManager
+import com.zickat.cluster.playground.node.cluster.ClusterManager.GetMembers
+import com.zickat.cluster.playground.node.processor.Processor
+import com.zickat.cluster.playground.node.processor.Processor.ComputeFibonacci
 
 object Node {
 

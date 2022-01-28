@@ -1,7 +1,7 @@
-package com.elleflorio.cluster.playground.node.processor
+package com.zickat.cluster.playground.node.processor
 
 import akka.actor.{Actor, ActorRef, Props}
-import com.elleflorio.cluster.playground.node.processor.ProcessorFibonacci.Compute
+import ProcessorFibonacci.{Compute, ComputeNumber}
 
 object Processor {
 
@@ -17,10 +17,16 @@ class Processor(nodeId: String) extends Actor {
 
   val fibonacciProcessor: ActorRef = context.actorOf(ProcessorFibonacci.props(nodeId), "fibonacci")
 
+  println(fibonacciProcessor)
+
   override def receive: Receive = {
     case ComputeFibonacci(value) => {
       val replyTo = sender()
       fibonacciProcessor ! Compute(value, replyTo)
+    }
+    case other: Int => {
+      val replyTo = sender()
+      fibonacciProcessor ! ComputeNumber(other, replyTo)
     }
   }
 }
